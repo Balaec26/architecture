@@ -11,7 +11,7 @@ namespace Mapping
     {
         public static void config()
         {
-            //modified 1 old
+            //modified 1
             Mapper.Initialize(x =>
             {
               x.AddProfile<LoginProfile>();
