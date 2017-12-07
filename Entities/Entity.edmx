@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ode_db_liveModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_birth">
+          <Key>
+            <PropertyRef Name="birth_id" />
+          </Key>
+          <Property Name="birth_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="birth_entrytypeid" Type="int" />
+          <Property Name="birth_surname" Type="varchar" MaxLength="45" />
+          <Property Name="birth_forename" Type="varchar" MaxLength="45" />
+          <Property Name="birth_initial" Type="varchar" MaxLength="45" />
+          <Property Name="birth_year" Type="varchar" MaxLength="45" />
+          <Property Name="birth_notes" Type="text" />
+          <Property Name="reg_id" Type="int" />
+          <Property Name="image_name" Type="varchar" MaxLength="45" />
+          <Property Name="Initial" Type="varchar" MaxLength="45" />
+          <Property Name="mother_maiden" Type="varchar" MaxLength="45" />
+          <Property Name="duplicate_check" Type="varchar" MaxLength="45" />
+          <Property Name="duplicate_value" Type="varchar" MaxLength="45" />
+          <Property Name="row_no" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_branch">
+          <Key>
+            <PropertyRef Name="infoid" />
+          </Key>
+          <Property Name="infoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branchname" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="manager_name" Type="varchar" MaxLength="45" />
+          <Property Name="userinfo" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_entrytype">
+          <Key>
+            <PropertyRef Name="entry_id" />
+          </Key>
+          <Property Name="entry_id" Type="int" Nullable="false" />
+          <Property Name="entry_typename" Type="varchar" MaxLength="45" />
+          <Property Name="descp" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tbl_formtype">
+          <Key>
+            <PropertyRef Name="form_id" />
+          </Key>
+          <Property Name="form_id" Type="int" Nullable="false" />
+          <Property Name="form_name" Type="varchar" MaxLength="45" />
+          <Property Name="descp" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tbl_login_status">
+          <Key>
+            <PropertyRef Name="info_id" />
+          </Key>
+          <Property Name="info_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="Login_date" Type="date" />
+          <Property Name="Login_Time" Type="varchar" MaxLength="45" />
+          <Property Name="Logout_Time" Type="varchar" MaxLength="45" />
+          <Property Name="Logout_type" Type="varchar" MaxLength="45" />
+          <Property Name="user_mac_address" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tbl_reel">
+          <Key>
+            <PropertyRef Name="reel_id" />
+          </Key>
+          <Property Name="reel_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reel_name" Type="varchar" MaxLength="150" />
+          <Property Name="reel_path" Type="varchar" MaxLength="255" />
+          <Property Name="no_of_img" Type="varchar" MaxLength="45" />
+          <Property Name="form_type" Type="varchar" MaxLength="45" />
+          <Property Name="b_uid" Type="int" />
+          <Property Name="tbl_reelcol" Type="varchar" MaxLength="45" />
+          <Property Name="sm_id" Type="int" />
+          <Property Name="reel_status" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tbl_reg">
+          <Key>
+            <PropertyRef Name="reg_id" />
+          </Key>
+          <Property Name="reg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reel_id" Type="int" />
+          <Property Name="start_img" Type="varchar" MaxLength="45" />
+          <Property Name="end_img" Type="varchar" MaxLength="45" />
+          <Property Name="form_type_id" Type="varchar" MaxLength="45" />
+          <Property Name="reg_name" Type="varchar" MaxLength="45" />
+          <Property Name="held_by" Type="varchar" MaxLength="45" />
+          <Property Name="key_uid" Type="int" />
+          <Property Name="tbl_regcol" Type="varchar" MaxLength="45" />
+          <Property Name="qc_uid" Type="int" />
+          <Property Name="final_uid" Type="int" />
+          <Property Name="vm_id" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="45" />
+          <Property Name="sm_id" Type="int" />
+          <Property Name="date" Type="varchar" MaxLength="45" />
+          <Property Name="current_entrytype" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_rework">
+          <Key>
+            <PropertyRef Name="info_id" />
+          </Key>
+          <Property Name="info_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reg_id" Type="int" />
+          <Property Name="Date" Type="varchar" MaxLength="45" />
+          <Property Name="prev_quid" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="role_name" Type="varchar" MaxLength="45" />
+          <Property Name="role_descp" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tbl_settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="form_name" Type="varchar" MaxLength="45" />
+          <Property Name="no_of_fields" Type="int" />
+          <Property Name="field_name" Type="varchar" MaxLength="45" />
+          <Property Name="no_of_entries" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="45" />
+          <Property Name="user_rollid" Type="int" />
+          <Property Name="user_password" Type="varchar" MaxLength="45" />
+          <Property Name="user_man_id" Type="int" />
+          <Property Name="user_status" Type="varchar" MaxLength="45" />
+          <Property Name="user_mac_address" Type="varchar" MaxLength="45" />
+          <Property Name="user_fullname" Type="varchar" MaxLength="45" />
+          <Property Name="user_branch" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityContainer Name="ode_db_liveModelStoreContainer">
+          <EntitySet Name="tbl_birth" EntityType="Self.tbl_birth" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_branch" EntityType="Self.tbl_branch" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_entrytype" EntityType="Self.tbl_entrytype" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_formtype" EntityType="Self.tbl_formtype" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_login_status" EntityType="Self.tbl_login_status" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_reel" EntityType="Self.tbl_reel" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_reg" EntityType="Self.tbl_reg" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_rework" EntityType="Self.tbl_rework" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_role" EntityType="Self.tbl_role" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_settings" EntityType="Self.tbl_settings" Schema="ode_db_live" store:Type="Tables" />
+          <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="ode_db_live" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ode_db_liveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_birth">
+          <Key>
+            <PropertyRef Name="birth_id" />
+          </Key>
+          <Property Name="birth_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="birth_entrytypeid" Type="Int32" />
+          <Property Name="birth_surname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="birth_forename" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="birth_initial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="birth_year" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="birth_notes" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="reg_id" Type="Int32" />
+          <Property Name="image_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Initial" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="mother_maiden" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="duplicate_check" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="duplicate_value" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="row_no" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_branch">
+          <Key>
+            <PropertyRef Name="infoid" />
+          </Key>
+          <Property Name="infoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branchname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="manager_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="userinfo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_entrytype">
+          <Key>
+            <PropertyRef Name="entry_id" />
+          </Key>
+          <Property Name="entry_id" Type="Int32" Nullable="false" />
+          <Property Name="entry_typename" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="descp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_formtype">
+          <Key>
+            <PropertyRef Name="form_id" />
+          </Key>
+          <Property Name="form_id" Type="Int32" Nullable="false" />
+          <Property Name="form_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="descp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_login_status">
+          <Key>
+            <PropertyRef Name="info_id" />
+          </Key>
+          <Property Name="info_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="Login_date" Type="DateTime" />
+          <Property Name="Login_Time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Logout_Time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Logout_type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_mac_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_reel">
+          <Key>
+            <PropertyRef Name="reel_id" />
+          </Key>
+          <Property Name="reel_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reel_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="reel_path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="no_of_img" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="form_type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="b_uid" Type="Int32" />
+          <Property Name="tbl_reelcol" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="sm_id" Type="Int32" />
+          <Property Name="reel_status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_reg">
+          <Key>
+            <PropertyRef Name="reg_id" />
+          </Key>
+          <Property Name="reg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reel_id" Type="Int32" />
+          <Property Name="start_img" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="end_img" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="form_type_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="reg_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="held_by" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="key_uid" Type="Int32" />
+          <Property Name="tbl_regcol" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="qc_uid" Type="Int32" />
+          <Property Name="final_uid" Type="Int32" />
+          <Property Name="vm_id" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="sm_id" Type="Int32" />
+          <Property Name="date" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="current_entrytype" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_rework">
+          <Key>
+            <PropertyRef Name="info_id" />
+          </Key>
+          <Property Name="info_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reg_id" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="prev_quid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="role_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="role_descp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="form_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="no_of_fields" Type="Int32" />
+          <Property Name="field_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="no_of_entries" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_rollid" Type="Int32" />
+          <Property Name="user_password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_man_id" Type="Int32" />
+          <Property Name="user_status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_mac_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_fullname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_branch" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ode_db_liveEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_birth" EntityType="Self.tbl_birth" />
+          <EntitySet Name="tbl_branch" EntityType="Self.tbl_branch" />
+          <EntitySet Name="tbl_entrytype" EntityType="Self.tbl_entrytype" />
+          <EntitySet Name="tbl_formtype" EntityType="Self.tbl_formtype" />
+          <EntitySet Name="tbl_login_status" EntityType="Self.tbl_login_status" />
+          <EntitySet Name="tbl_reel" EntityType="Self.tbl_reel" />
+          <EntitySet Name="tbl_reg" EntityType="Self.tbl_reg" />
+          <EntitySet Name="tbl_rework" EntityType="Self.tbl_rework" />
+          <EntitySet Name="tbl_role" EntityType="Self.tbl_role" />
+          <EntitySet Name="tbl_settings" EntityType="Self.tbl_settings" />
+          <EntitySet Name="tbl_user" EntityType="Self.tbl_user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ode_db_liveModelStoreContainer" CdmEntityContainer="ode_db_liveEntities">
+          <EntitySetMapping Name="tbl_birth">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_birth">
+              <MappingFragment StoreEntitySet="tbl_birth">
+                <ScalarProperty Name="birth_id" ColumnName="birth_id" />
+                <ScalarProperty Name="birth_entrytypeid" ColumnName="birth_entrytypeid" />
+                <ScalarProperty Name="birth_surname" ColumnName="birth_surname" />
+                <ScalarProperty Name="birth_forename" ColumnName="birth_forename" />
+                <ScalarProperty Name="birth_initial" ColumnName="birth_initial" />
+                <ScalarProperty Name="birth_year" ColumnName="birth_year" />
+                <ScalarProperty Name="birth_notes" ColumnName="birth_notes" />
+                <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+                <ScalarProperty Name="image_name" ColumnName="image_name" />
+                <ScalarProperty Name="Initial" ColumnName="Initial" />
+                <ScalarProperty Name="mother_maiden" ColumnName="mother_maiden" />
+                <ScalarProperty Name="duplicate_check" ColumnName="duplicate_check" />
+                <ScalarProperty Name="duplicate_value" ColumnName="duplicate_value" />
+                <ScalarProperty Name="row_no" ColumnName="row_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_branch">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_branch">
+              <MappingFragment StoreEntitySet="tbl_branch">
+                <ScalarProperty Name="infoid" ColumnName="infoid" />
+                <ScalarProperty Name="branchname" ColumnName="branchname" />
+                <ScalarProperty Name="manager_name" ColumnName="manager_name" />
+                <ScalarProperty Name="userinfo" ColumnName="userinfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_entrytype">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_entrytype">
+              <MappingFragment StoreEntitySet="tbl_entrytype">
+                <ScalarProperty Name="entry_id" ColumnName="entry_id" />
+                <ScalarProperty Name="entry_typename" ColumnName="entry_typename" />
+                <ScalarProperty Name="descp" ColumnName="descp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_formtype">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_formtype">
+              <MappingFragment StoreEntitySet="tbl_formtype">
+                <ScalarProperty Name="form_id" ColumnName="form_id" />
+                <ScalarProperty Name="form_name" ColumnName="form_name" />
+                <ScalarProperty Name="descp" ColumnName="descp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_login_status">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_login_status">
+              <MappingFragment StoreEntitySet="tbl_login_status">
+                <ScalarProperty Name="info_id" ColumnName="info_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Login_date" ColumnName="Login_date" />
+                <ScalarProperty Name="Login_Time" ColumnName="Login_Time" />
+                <ScalarProperty Name="Logout_Time" ColumnName="Logout_Time" />
+                <ScalarProperty Name="Logout_type" ColumnName="Logout_type" />
+                <ScalarProperty Name="user_mac_address" ColumnName="user_mac_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_reel">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_reel">
+              <MappingFragment StoreEntitySet="tbl_reel">
+                <ScalarProperty Name="reel_id" ColumnName="reel_id" />
+                <ScalarProperty Name="reel_name" ColumnName="reel_name" />
+                <ScalarProperty Name="reel_path" ColumnName="reel_path" />
+                <ScalarProperty Name="no_of_img" ColumnName="no_of_img" />
+                <ScalarProperty Name="form_type" ColumnName="form_type" />
+                <ScalarProperty Name="b_uid" ColumnName="b_uid" />
+                <ScalarProperty Name="tbl_reelcol" ColumnName="tbl_reelcol" />
+                <ScalarProperty Name="sm_id" ColumnName="sm_id" />
+                <ScalarProperty Name="reel_status" ColumnName="reel_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_reg">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_reg">
+              <MappingFragment StoreEntitySet="tbl_reg">
+                <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+                <ScalarProperty Name="reel_id" ColumnName="reel_id" />
+                <ScalarProperty Name="start_img" ColumnName="start_img" />
+                <ScalarProperty Name="end_img" ColumnName="end_img" />
+                <ScalarProperty Name="form_type_id" ColumnName="form_type_id" />
+                <ScalarProperty Name="reg_name" ColumnName="reg_name" />
+                <ScalarProperty Name="held_by" ColumnName="held_by" />
+                <ScalarProperty Name="key_uid" ColumnName="key_uid" />
+                <ScalarProperty Name="tbl_regcol" ColumnName="tbl_regcol" />
+                <ScalarProperty Name="qc_uid" ColumnName="qc_uid" />
+                <ScalarProperty Name="final_uid" ColumnName="final_uid" />
+                <ScalarProperty Name="vm_id" ColumnName="vm_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="sm_id" ColumnName="sm_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="current_entrytype" ColumnName="current_entrytype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_rework">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_rework">
+              <MappingFragment StoreEntitySet="tbl_rework">
+                <ScalarProperty Name="info_id" ColumnName="info_id" />
+                <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="prev_quid" ColumnName="prev_quid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_role">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_role">
+              <MappingFragment StoreEntitySet="tbl_role">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="role_descp" ColumnName="role_descp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_settings">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_settings">
+              <MappingFragment StoreEntitySet="tbl_settings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="form_name" ColumnName="form_name" />
+                <ScalarProperty Name="no_of_fields" ColumnName="no_of_fields" />
+                <ScalarProperty Name="field_name" ColumnName="field_name" />
+                <ScalarProperty Name="no_of_entries" ColumnName="no_of_entries" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user">
+            <EntityTypeMapping TypeName="ode_db_liveModel.tbl_user">
+              <MappingFragment StoreEntitySet="tbl_user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_rollid" ColumnName="user_rollid" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_man_id" ColumnName="user_man_id" />
+                <ScalarProperty Name="user_status" ColumnName="user_status" />
+                <ScalarProperty Name="user_mac_address" ColumnName="user_mac_address" />
+                <ScalarProperty Name="user_fullname" ColumnName="user_fullname" />
+                <ScalarProperty Name="user_branch" ColumnName="user_branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
