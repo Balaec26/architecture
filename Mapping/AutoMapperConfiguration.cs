@@ -12,7 +12,7 @@ namespace Mapping
         public static void config()
         {
             //modified 1
-            //modified 2
+            //modified 2333333
             Mapper.Initialize(x =>
             {
               x.AddProfile<LoginProfile>();
